@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['52.66.239.49', '*']
 
+CSRF_TRUSTED_ORIGINS = ['https://costestimate-46gu.onrender.com']
 
 # Application definition
 
