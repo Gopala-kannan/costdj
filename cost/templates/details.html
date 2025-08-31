@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}All Profiles{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+    <h2 class="mb-4 text-center">All Profile Accounts</h2>
+
+    <div class="row">
+        {% for profile in profiles %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="profile-card shadow animated-card">
+                <div class="profile-header">
+                    <h5>{{ profile.name }} <span class="id-mask">(****0817)</span></h5>
+                </div>
+                <hr>
+                <div class="profile-body">
+                    {% for spendamount in profile.spendamount_set.all %}
+                    <p><strong>🏠 Home Rent:</strong> ₹ {{ spendamount.home_rent }}</p>
+                    <p><strong>💡 EB Bill:</strong> ₹ {{ spendamount.eb_bill }}</p>
+                    <p><strong>🔥 Gas Bill:</strong> ₹ {{ spendamount.gas_bill }}</p>
+                    <p><strong>🛒 Groceries:</strong> ₹ {{ spendamount.groceries }}</p>
+                    {% endfor %}
+                    <hr>
+                    <p><strong class="text-success">Credit:</strong> ₹ {{ profile.credit }}</p>
+                    <p><strong class="text-danger">Debit:</strong> ₹ {{ profile.debit }}</p>
+                    <p><strong class="text-primary">Balance:</strong> ₹ {{ profile.balance }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<style>
+/* Card container */
+.profile-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 6px solid #4e73df;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Header section */
+.profile-header h5 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #2c3e50;
+}
+
+.id-mask {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Profile details */
+.profile-body p {
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #444;
+}
+
+.profile-body strong {
+    font-weight: 600;
+}
+
+/* Text colors */
+.text-success {
+    color: #28a745 !important;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}
+
+.text-primary {
+    color: #007bff !important;
+}
+
+/* Animation */
+.animated-card {
+    animation: fadeInUp 0.6s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+{% endblock %}

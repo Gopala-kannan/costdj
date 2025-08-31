@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Profile{% endblock %}
+
+{% block content %}
+<div
+    style="margin: 80px; padding: 50px; background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.584), 0 8px 16px rgba(0,0,0,0.05); border-radius:8px;">
+    <h2>Profile</h2>
+
+    <form method="post" class="form-horizontal">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" name="name" id="name" value="{{ profile.name }}"
+                required>
+        </div>
+
+        <div class="mb-3">
+            <label for="credit" class="form-label">Credit:</label>
+            <input type="number" class="form-control" name="credit" id="credit"
+                value="{{ profile.credit }}" required>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Create</button>
+    </form>
+
+    <br>
+    <a href="{% url 'details' %}">Show List</a>
+</div>
+{% endblock %}

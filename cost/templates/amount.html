@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Spend Details{% endblock %}
+
+{% block content %}
+<div style="margin: 80px; padding: 50px; background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.584), 0 8px 16px rgba(0,0,0,0.05); border-radius:8px;">
+    <h2>Add Spend Details</h2>
+
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="id_profile" class="form-label mt-3" style="font-weight: 500;">Profile:</label>
+            <select name="profile" required id="id_profile" class="form-select" aria-describedby="profileHelp">
+                <option value="">Select Profile</option>
+                {% for profile in profiles %}
+                    <option value="{{ profile.id }}">{{ profile.name }}</option>
+                {% endfor %}
+            </select>
+            <div class="invalid-feedback" id="profileHelp">Please select profile</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="home_rent" class="form-label" style="font-weight: 500;">Home Rent:</label>
+            <input type="number" name="home_rent" required id="home_rent" class="form-control" aria-describedby="helpHomeRent">
+            <div class="invalid-feedback" id="helpHomeRent">Please enter home rent</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="eb_bill" class="form-label" style="font-weight: 500;">EB Bill:</label>
+            <input type="number" name="eb_bill" required id="eb_bill" class="form-control" aria-describedby="helpEbbill">
+            <div class="invalid-feedback" id="helpEbbill">Please enter eb bill</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="gas_bill" class="form-label" style="font-weight: 500;">Gas Bill:</label>
+            <input type="number" name="gas_bill" required id="gas_bill" class="form-control" aria-describedby="helpGasBill">
+            <div class="invalid-feedback" id="helpGasBill">Please enter gas bill</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="groceries" class="form-label" style="font-weight: 500;">Groceries:</label>
+            <input type="number" name="groceries" required id="groceries" class="form-control" aria-describedby="helpGroceries">
+            <div class="invalid-feedback" id="helpGroceries">Please enter groceries</div>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Save</button>
+    </form>
+
+    <br>
+    <a href="{% url 'details' %}">List</a>
+</div> 
+{% endblock %}

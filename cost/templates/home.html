@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="margin: 80px; padding: 50px; background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.584), 0 8px 16px rgba(0,0,0,0.05); border-radius:8px;">
+    <h1>Cost Estimate</h1>
+    <nav>
+        <a href="{% url 'register' %}" class="btn btn-dark">Register</a>
+    </nav>
+    <section style="margin-top: 30px;">
+        <h2>Welcome!</h2>
+        <p>To add cost estimate details, please <a href="{% url 'register' %}">register</a> first and enter your amount details.</p>
+    </section>
+</div>
+{% endblock content %}
